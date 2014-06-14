@@ -93,8 +93,14 @@ function loadMedia()
                 console.log("No session.");
                 return;
         }
-
-        var mediaInfo = new chrome.cast.media.MediaInfo('http://i.imgur.com/IFD14.jpg');
+		
+		var mediaInfo = document.getElementById('inputImage').value;
+		
+		if( mediaInfo.length == 0 ) 
+		{
+			var mediaInfo = new chrome.cast.media.MediaInfo('http://i.imgur.com/IFD14.jpg');
+		}
+		
         mediaInfo.contentType = 'image/jpg';
   
         var request = new chrome.cast.media.LoadRequest(mediaInfo);
