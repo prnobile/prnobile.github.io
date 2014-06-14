@@ -94,13 +94,14 @@ function loadMedia()
                 return;
         }
 		
-		var mediaInfo = document.getElementById('inputImage').value;
+		var imageURL = document.getElementById('inputImage').value;
 		
-		if( mediaInfo.length == 0 ) 
+		if( imageURL.length == 0 ) 
 		{
-			var mediaInfo = new chrome.cast.media.MediaInfo('http://i.imgur.com/IFD14.jpg');
+			imageURL = 'http://i.imgur.com/IFD14.jpg';
 		}
 		
+		var mediaInfo = new chrome.cast.media.MediaInfo(imageURL);
         mediaInfo.contentType = 'image/jpg';
   
         var request = new chrome.cast.media.LoadRequest(mediaInfo);
