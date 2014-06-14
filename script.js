@@ -17,6 +17,16 @@ $( document ).ready(function()
 								}, 1000);
 });
 
+$('#castme').click(function()
+{
+        launchApp();
+});
+
+$('#stop').click(function()
+{
+        stopApp();
+});
+
 function initializeCastApi() 
 {
         var applicationID = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
@@ -56,11 +66,6 @@ function onInitError()
 {
         console.log("Initialization failed");
 }
-
-$('#castme').click(function()
-{
-        launchApp();
-});
 
 function launchApp() 
 {
@@ -106,4 +111,19 @@ function onLoadSuccess()
 function onLoadError() 
 {
         console.log('Failed to load image.');
+}
+
+function stopApp() 
+{
+        session.stop(onStopAppSuccess, onStopAppError);
+}
+
+function onStopAppSuccess() 
+{
+        console.log('Successfully stopped app.');
+}
+
+function onStopAppError() 
+{
+        console.log('Error stopping app.');
 }
