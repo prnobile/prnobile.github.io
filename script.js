@@ -56,3 +56,25 @@ function onInitError()
 {
         console.log("Initialization failed");
 }
+
+$('#castme').click(function()
+{
+        launchApp();
+});
+
+function launchApp() 
+{
+        console.log("Launching the Chromecast App...");
+        chrome.cast.requestSession(onRequestSessionSuccess, onLaunchError);
+}
+
+function onRequestSessionSuccess(e) 
+{
+        console.log("Successfully created session: " + e.sessionId);
+        session = e;
+}
+
+function onLaunchError() 
+{
+        console.log("Error connecting to the Chromecast.");
+}
